@@ -83,7 +83,7 @@ $bits-grid-columns: (2 3 4 5 6 8 10 12) !default;
 
   .#{$prefix}Grid--middle {
     > {
-      .Grid-cell,
+      .#{$bits-components-ns}Grid-cell,
       .#{$prefix}Grid-cell {
         vertical-align: middle !important;
       }
@@ -92,7 +92,7 @@ $bits-grid-columns: (2 3 4 5 6 8 10 12) !default;
 
   .#{$prefix}Grid--bottom {
     > {
-      .Grid-cell,
+      .#{$bits-components-ns}Grid-cell,
       .#{$prefix}Grid-cell {
         vertical-align: bottom !important;
       }
@@ -102,7 +102,7 @@ $bits-grid-columns: (2 3 4 5 6 8 10 12) !default;
   @each $n in $bits-grid-columns {
     .#{$prefix}Grid--#{$n}col {
       > {
-        .Grid-cell,
+        .#{$bits-components-ns}Grid-cell,
         .#{$prefix}Grid-cell {
           width: percentage(1 / $n) !important;
         }
