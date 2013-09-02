@@ -1,0 +1,117 @@
+/* ==========================================================================
+   Responsive grid
+   ========================================================================== */
+
+/**
+ * Grid with responsive capability
+ *
+ * See original grid for more about the component itself.
+ */
+
+/* Variables
+   ========================================================================== */
+
+/**
+ * Bits.sass components namespace
+ */
+
+$bits-components-ns: 'bits-' !default;
+
+/**
+ * A list of generated columns
+ */
+
+$bits-grid-columns: (2 3 4 5 6 8 10 12) !default;
+
+/* Main mixin
+   ========================================================================== */
+
+/**
+ * Mixin encapsulating a version of grid component at a certain breakpoint
+ *
+ * Example:
+ *
+ * $grid-breakpoints: v2 v3 v4 v5 v6;
+ *
+ * @each $bp in $grid-breakpoints {
+ *   @include breakpoint($bp) {
+ *     @include bits-grid-responsive($bp);
+ *   }
+ * }
+ */
+
+/**
+ * 1. Eg. 'bits-v4-'.
+ */
+
+@mixin bits-grid-responsive($breakpoint) {
+  $prefix: unquote("#{$bits-components-ns}#{$breakpoint}-"); /* 1 */
+
+  .#{$prefix}Grid {
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+
+    text-align: left !important;
+    text-rendering: optimizespeed;
+    letter-spacing: -0.31em !important;
+  }
+
+  .opera:-o-prefocus,
+  .#{$prefix}Grid {
+    word-spacing: -0.43em !important;
+  }
+
+  .#{$prefix}Grid-cell {
+    -moz-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+    display: inline-block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    vertical-align: top !important;
+
+    text-align: left !important;
+    text-rendering: auto !important;
+    letter-spacing: normal !important;
+    word-spacing: normal !important;
+  }
+
+  .#{$prefix}Grid--center {
+    text-align: center !important;
+  }
+
+  .#{$prefix}Grid--middle {
+    > {
+      .Grid-cell,
+      .#{$prefix}Grid-cell {
+        vertical-align: middle !important;
+      }
+    }
+  }
+
+  .#{$prefix}Grid--bottom {
+    > {
+      .Grid-cell,
+      .#{$prefix}Grid-cell {
+        vertical-align: bottom !important;
+      }
+    }
+  }
+
+  @each $n in $bits-grid-columns {
+    .#{$prefix}Grid--#{$n}col {
+      > {
+        .Grid-cell,
+        .#{$prefix}Grid-cell {
+          width: percentage(1 / $n) !important;
+        }
+      }
+    }
+  }
+
+  .#{$prefix}Grid-cell--center {
+    display: block !important;
+    margin: 0 auto !important;
+  }
+}
