@@ -21,7 +21,7 @@ $bits-components-ns: 'bits-' !default;
  * A list of generated columns
  */
 
-$bits-grid-columns: (2 3 4 5 6 8 10 12) !default;
+$bits-responsive-grid-columns: (2 3 4 5 6 8 10 12) !default;
 
 /* Main mixin
    ========================================================================== */
@@ -99,7 +99,7 @@ $bits-grid-columns: (2 3 4 5 6 8 10 12) !default;
     }
   }
 
-  @each $n in $bits-grid-columns {
+  @each $n in $bits-responsive-grid-columns {
     .#{$prefix}Grid--#{$n}col {
       > {
         .#{$bits-components-ns}Grid-cell,
